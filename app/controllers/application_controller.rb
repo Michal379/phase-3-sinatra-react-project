@@ -120,4 +120,22 @@ class ApplicationController < Sinatra::Base
       customer.to_json
      end
 
+     #delete requests
+     delete '/buses/:id' do
+      bus = Bus.find(params[:id])
+      bus.destroy
+      bus.to_json
+     end
+
+     delete '/trains/:id' do
+      train = Train.find(params[:id])
+      train.destroy
+      train.to_json
+     end
+
+     delete '/customer/:id' do
+      customer = Customer.find(params[:id])
+      customer.destroy
+      customer.to_json
+     end
   end
