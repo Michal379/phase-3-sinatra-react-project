@@ -10,7 +10,7 @@ train_departure_cities = ["Nairobi","Mombasa","Suswa","Syokimau","Kisumu","Voi",
 
   bus_number = "0" + Faker::Number.unique.number(digits: 2).to_s  # Ensure bus_number starts with zero
   train_number =  Faker::Number.unique.number(digits: 3)
-  Bus.create(
+  $bus = Bus.create(
     bus_number: bus_number.to_i,
     departure_city: departure_cities.sample,
     destination_city: departure_cities.sample,
@@ -19,7 +19,8 @@ train_departure_cities = ["Nairobi","Mombasa","Suswa","Syokimau","Kisumu","Voi",
     available_seats: Faker::Number.between(from: 10, to: 50),
     fare: fare
   )
-  Train.create(
+
+  $train = Train.create(
      train_number: train_number,
     departure_city: train_departure_cities.sample,
     destination_city: train_departure_cities.sample,
@@ -27,9 +28,44 @@ train_departure_cities = ["Nairobi","Mombasa","Suswa","Syokimau","Kisumu","Voi",
     arrival: arrival_time,
     available_seats: Faker::Number.between(from: 70, to: 200),
     fare: fare
-  )
-  
+  )  
 end
+
+
+18.times do
+    first_names = ['John', 'Jane', 'David', 'Emily', 'Michael', 'Sarah', 'Robert', 'Olivia', 'Daniel', 'Sophia', 'Matthew', 'Isabella', 'Andrew', 'Ava', 'James', 'Mia', 'William', 'Emma']
+  last_names = ['Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin', 'Thompson', 'Garcia']
+  modes_of_payment= ['Mobile money', 'Credit card']
+  departure_infos = ['bus_number 80', 'train_number 225', 'bus_number 55', 'train_number 370', 'bus_number 13', 'train_number 553', 'bus_number 40', 'train_number 703', 'bus_number 43', 'train_number 121']
+   bus_number = $bus.bus_number
+   train_number = $train.train_number
+
+
+  bus_number = Bus.pluck(:bus_number).sample
+  train_number = Train.pluck(:train_number).sample
+
+
+    Customer.create(
+      first_name: first_names.sample,
+      last_name: last_names.sample,
+      passport: rand(1_000_000_000..9_999_999_999), # Generate random 10-digit passport number
+      phone_number: rand(1_000_000_000..9_999_999_999), # Generate random 10-digit phone number
+      mode_of_payment: modes_of_payment.sample,
+      departure_info: departure_infos.sample,
+      bus_number_id: bus_number
+    )
+
+
+    Customer.create(
+      first_name: first_names.sample,
+      last_name: last_names.sample,
+      passport: rand(1_000_000_000..9_999_999_999), # Generate random 10-digit passport number
+      phone_number: rand(1_000_000_000..9_999_999_999), # Generate random 10-digit phone number
+      mode_of_payment: modes_of_payment.sample,
+      departure_info: departure_infos.sample,
+      train_number_id: train_number
+    )
+  end
 
 
 puts "✅ Done seeding!"
