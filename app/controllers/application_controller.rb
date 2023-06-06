@@ -6,4 +6,13 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  get "/buses" do
+    buses = Bus.all 
+    buses.to_json
+  end
+
+  get "/trains" do
+    trains = Train.all 
+    trains.to_json
+  end
 end
