@@ -4,8 +4,8 @@ class CreateBuses < ActiveRecord::Migration[6.1]
       t.integer :bus_number
       t.string :departure_city
       t.string :destination_city
-      t.integer :departure_time
-      t.integer :arrival_time
+      t.datetime :departure
+      t.datetime :arrival
       t.integer :available_seats
       t.integer :fare
     end

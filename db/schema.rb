@@ -16,14 +16,15 @@ ActiveRecord::Schema.define(version: 2023_06_05_191716) do
     t.integer "bus_number"
     t.string "departure_city"
     t.string "destination_city"
-    t.integer "departure_time"
-    t.integer "arrival_time"
+    t.datetime "departure"
+    t.datetime "arrival"
     t.integer "available_seats"
     t.integer "fare"
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.integer "passport"
     t.integer "phone_number"
     t.string "mode_of_payment"
@@ -34,8 +35,8 @@ ActiveRecord::Schema.define(version: 2023_06_05_191716) do
     t.integer "train_number"
     t.string "departure_city"
     t.string "destination_city"
-    t.integer "departure_time"
-    t.integer "arrival_time"
+    t.datetime "departure"
+    t.datetime "arrival"
     t.integer "available_seats"
     t.integer "fare"
   end
