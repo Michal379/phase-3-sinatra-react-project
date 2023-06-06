@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_05_191716) do
+ActiveRecord::Schema.define(version: 2023_06_06_063509) do
 
   create_table "buses", force: :cascade do |t|
     t.integer "bus_number"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2023_06_05_191716) do
     t.integer "phone_number"
     t.string "mode_of_payment"
     t.string "departure_info"
+    t.integer "bus_number_id"
+    t.integer "train_number_id"
   end
 
   create_table "trains", force: :cascade do |t|
