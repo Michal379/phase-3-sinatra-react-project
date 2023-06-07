@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 2023_06_07_055403) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "comment"
+    t.string "name"
+    t.string "email"
+    t.string "reviews"
   end
 
   create_table "trains", force: :cascade do |t|

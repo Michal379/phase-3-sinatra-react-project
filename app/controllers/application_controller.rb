@@ -78,6 +78,15 @@ class ApplicationController < Sinatra::Base
     customer.to_json
   end
 
+  post '/reviews' do
+    review = Review.create(
+      name:params[:name],
+      email:params[:email],
+      review:params[:review]
+    ) 
+    review.to_json
+  end
+
   # patch requests
   patch '/buses/:id' do
     bus = Bus.find(params[:id])
