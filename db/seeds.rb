@@ -84,3 +84,5 @@ modes_of_payment = ['Mobile money', 'Credit card']
 end
 
 puts "✅ Done seeding!"
+
+
